@@ -1,37 +1,31 @@
-GET http://localhost:3000/posts
+PUT http://localhost:5000/api/users
 
+###
+POST http://localhost:5000/api/users
+
+###
+GET http://localhost:5000/api/shops
+
+###
+POST http://localhost:5000/api/shops/
 
 ###
 
-POST http://localhost:3000/posts
-Content-Type: application/json
-
-{
-			"title": "async!",
-			"description": "try catch trial"
-}
+GET http://localhost:5000/api/auth
+// get log in user
 
 ###
-GET http://localhost:3000/posts/5f59362dbb7043330803aa84
-
-
-
-###
-DELETE http://localhost:3000/posts/5f59362dbb7043330803aa84
+POST http://localhost:5000/api/auth
+// log in user
 
 ###
-PUT http://localhost:3000/api/courses/1
-Content-Type: application/json
-
-{
-		"name": "new course 2"
-}
+GET http://localhost:5000/api/posts/
 
 ###
+POST http://localhost:5000/api/posts/
 
-DELETE http://localhost:3000/api/courses/1
-Content-Type: application/json
+###
+PUT http://localhost:5000/api/posts/1
 
-{
-		"name": "new course 2"
-}
+###
+DELETE http://localhost:5000/api/posts/1

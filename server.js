@@ -11,6 +11,9 @@ connectDB();
 app.use(express.json());
 
 app.use("/api/shops", require("./routes/shops"));
+app.use("/api/users", require("./routes/users"));
+app.use("/api/posts", require("./routes/posts"));
+app.use("/api/auth", require("./routes/auth"));
 
 app.get("/", (req, res) => {
 	res.json({ msg: "Welcome to Food Review APP" });
