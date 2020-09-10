@@ -8,7 +8,8 @@ require("dotenv/config");
 
 connectDB();
 
-app.use(express.json());
+// INIT MIDDLEWARE
+app.use(express.json({ extended: false }));
 
 app.use("/api/shops", require("./routes/shops"));
 app.use("/api/users", require("./routes/users"));

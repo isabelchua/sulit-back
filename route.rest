@@ -2,6 +2,13 @@ PUT http://localhost:5000/api/users
 
 ###
 POST http://localhost:5000/api/users
+Content-Type: application/json
+
+{
+			"name": "Isabel",
+			"email": "isabel@gmail.com",
+			"password": "343223"
+}
 
 ###
 GET http://localhost:5000/api/shops
