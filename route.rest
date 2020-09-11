@@ -1,14 +1,35 @@
 PUT http://localhost:5000/api/users
 
+
 ###
+// GET ALL USERS
+GET http://localhost:5000/api/users
+
+
+###
+// REGISTER USER
 POST http://localhost:5000/api/users
 Content-Type: application/json
 
 {
-			"name": "Isabel",
-			"email": "isabel@gmail.com",
-			"password": "343223"
+			"name": "Mac Yu",
+			"email": "macyu@gmail.com",
+			"password": "12345",
+			"address": "New Zealand"
 }
+###
+// LOGIN USER
+POST http://localhost:5000/api/auth
+Content-Type: application/json
+
+{
+			"email": "macyu@gmail.com",
+			"password": "12345"
+}
+###
+// LOGIN USER eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNWY1OTg0MWM3MzczYjYyZDcwNzUzNmU1In0sImlhdCI6MTU5OTcwNTQxOCwiZXhwIjoxNTk5ODA1NDE4fQ.IBH_vrceZw_0oODnrn3GVQ169xaS3yWQZvTKQCBFVrg
+GET http://localhost:5000/api/auth
+Authorization: token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNWY1OTg0MWM3MzczYjYyZDcwNzUzNmU1In0sImlhdCI6MTU5OTcwNTQxOCwiZXhwIjoxNTk5ODA1NDE4fQ.IBH_vrceZw_0oODnrn3GVQ169xaS3yWQZvTKQCBFVrg
 
 ###
 GET http://localhost:5000/api/shops

@@ -11,6 +11,7 @@ connectDB();
 // INIT MIDDLEWARE
 app.use(express.json({ extended: false }));
 
+app.use("/api/", require("./routes/home"));
 app.use("/api/shops", require("./routes/shops"));
 app.use("/api/users", require("./routes/users"));
 app.use("/api/posts", require("./routes/posts"));
