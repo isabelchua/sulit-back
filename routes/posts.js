@@ -1,3 +1,4 @@
+// @ts-nocheck
 const express = require("express");
 const router = express.Router();
 const auth = require("../middleware/auth");
@@ -88,8 +89,39 @@ router.post(
 // @route		PUT api/post
 // @desc			Edit a review
 // @access		Private
-router.put("/:postId", (req, res) => {
-	res.send("Edit post");
+router.put("/:id", auth, async (req, res) => {
+	//res.send("Edit post");
+	const { review, rating, image } = req.body;
+
+	// Build post object
+	const postFields = {};
+	if (review) postFields.review = review;
+	if (rating) postFields.rating = rating;
+	if (image) postFields.image = image;
+	//console.log(rating);
+
+	try {
+		let post = await Post.findById(req.params.id);
+
+		if (!post) return res.status(404).json({ msg: "Post not found" });
+
+		// took time solving this one
+		// Make sure user owns post
+		if (post.userid.toString() !== req.user.id) {
+			return res.status(401).json({ msg: "Not Authorized" });
+		}
+
+		post = await Post.findByIdAndUpdate(
+			req.params.id,
+			{ $set: postFields },
+			{ new: true }
+		);
+
+		res.json(post);
+	} catch (err) {
+		console.error(err.message);
+		res.status(500).send("Server Error");
+	}
 });
 
 // @route		DELETE api/post

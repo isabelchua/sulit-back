@@ -21,9 +21,7 @@ router.get("/:id", async (req, res) => {
 			shop: shop,
 			postsByShop: posts
 		});
-		if (shop.id == null) {
-			return;
-		}
+		
 	} catch (e) {
 		console.log(e);
 		res.redirect("/");

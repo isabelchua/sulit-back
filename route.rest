@@ -32,10 +32,19 @@ GET http://localhost:5000/api/auth
 Authorization: token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNWY1OTg0MWM3MzczYjYyZDcwNzUzNmU1In0sImlhdCI6MTU5OTcwNTQxOCwiZXhwIjoxNTk5ODA1NDE4fQ.IBH_vrceZw_0oODnrn3GVQ169xaS3yWQZvTKQCBFVrg
 
 ###
-GET http://localhost:5000/api/shops
+GET http://localhost:5000/api/shops/1
 
 ###
-POST http://localhost:5000/api/shops/
+GET http://localhost:5000/api/
+
+###
+POST http://localhost:5000/api/
+Content-Type: application/json
+
+{
+	"name": "Kagayanon",
+	"address": "Cagayan de Oro"
+}
 
 ###
 
@@ -47,7 +56,17 @@ POST http://localhost:5000/api/auth
 // log in user
 
 ###
-GET http://localhost:5000/api/posts/
+// POST a REVIEW in a SHOP
+POST http://localhost:5000/api/posts/5f5adabae9e6931cbcea8501
+Content-Type: application/json
+
+{
+	"review": "yum!",
+	"rating": 4
+}
+
+###
+GET http://localhost:5000/api/posts/all
 
 ###
 POST http://localhost:5000/api/posts/
