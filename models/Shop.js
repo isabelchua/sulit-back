@@ -14,6 +14,10 @@ const ShopSchema = mongoose.Schema({
 	date: {
 		type: Date,
 		default: Date.now
+	},
+	userid: {
+		type: mongoose.Schema.Types.ObjectId,
+		ref: "user"
 	}
 });
 
