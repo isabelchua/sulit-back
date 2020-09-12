@@ -105,11 +105,12 @@ router.put("/:id", auth, async (req, res) => {
 
 		if (!post) return res.status(404).json({ msg: "Post not found" });
 
-		// took time solving this one
 		// Make sure user owns post
 		if (post.userid.toString() !== req.user.id) {
 			return res.status(401).json({ msg: "Not Authorized" });
 		}
+
+		// took time solving this one
 
 		post = await Post.findByIdAndUpdate(
 			req.params.id,
@@ -127,8 +128,25 @@ router.put("/:id", auth, async (req, res) => {
 // @route		DELETE api/post
 // @desc			Delete a review
 // @access		Private
-router.delete("/:postId", (req, res) => {
-	res.send("Delete post");
+router.delete("/:id", auth, async (req, res) => {
+	//res.send("Delete post");
+	try {
+		let post = await Post.findById(req.params.id);
+
+		if (!post) return res.status(404).json({ msg: "Post not found" });
+
+		// Make sure user owns post
+		if (post.userid.toString() !== req.user.id) {
+			return res.status(401).json({ msg: "Not Authorized" });
+		}
+
+		await Post.findByIdAndRemove(req.params.id);
+
+		res.json({ msg: "Post removed" });
+	} catch (err) {
+		console.error(err.message);
+		res.status(500).send("Server Error");
+	}
 });
 
 module.exports = router;
